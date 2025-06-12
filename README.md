@@ -1,4 +1,4 @@
-# Foody Notebook
+# Foodie Notebook
 
 A web application for managing and sharing your favorite dishes and recipes.
 
@@ -26,7 +26,7 @@ A web application for managing and sharing your favorite dishes and recipes.
 ## Project Structure
 
 ```
-foody-notebook/
+foodie-notebook/
 ├── frontend/           # React frontend
 │   ├── src/
 │   ├── public/
