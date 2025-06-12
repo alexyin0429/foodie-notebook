@@ -4,6 +4,8 @@ import { supabase } from '../services/supabase';
 import DishForm from '../components/DishForm';
 import LoadingSpinner from '../components/LoadingSpinner';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 function EditDishPage() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -50,7 +52,7 @@ function EditDishPage() {
             }
 
             // Send PUT request to backend API
-            const response = await fetch(`http://localhost:8000/api/dishes/${id}`, {
+            const response = await fetch(`${API_URL}/api/dishes/${id}`, {
                 method: 'PUT',
                 body: form
             });
@@ -75,7 +77,7 @@ function EditDishPage() {
         if (!window.confirm('Are you sure you want to delete this dish?')) return;
 
         try {
-            const response = await fetch(`http://localhost:8000/api/dishes/${id}`, {
+            const response = await fetch(`${API_URL}/api/dishes/${id}`, {
                 method: 'DELETE',
             });
 
