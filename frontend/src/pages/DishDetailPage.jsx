@@ -3,6 +3,8 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../services/supabase';
 import LoadingSpinner from '../components/LoadingSpinner';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 function DishDetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -16,13 +18,10 @@ function DishDetailPage() {
         const fetchDish = async () => {
         try {
             setLoading(true);
-            const { data, error } = await supabase
-            .from('dishes')
-            .select('*')
-            .eq('id', id)
-            .single();
+            const response = await fetch(`${API_URL}/api/dishes/${id}`);
+            const data = await response.json();
 
-            if (error) throw error;
+            if (data.error) throw new Error(data.error);
             setDish(data);
         } catch (error) {
             setError(error.message);
@@ -41,7 +40,7 @@ function DishDetailPage() {
         
         setIsDeleting(true);
         try {
-            const response = await fetch(`http://localhost:8000/api/dishes/${id}`, {
+            const response = await fetch(`${API_URL}/api/dishes/${id}`, {
                 method: 'DELETE',
             });
 

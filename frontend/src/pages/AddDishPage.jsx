@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import DishForm from '../components/DishForm';
 import LoadingSpinner from '../components/LoadingSpinner';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 function AddDishPage() {
     const navigate = useNavigate();
     const [isSaving, setIsSaving] = useState(false);
@@ -22,7 +24,7 @@ function AddDishPage() {
         }
 
         // 发送POST请求到后端API
-        const response = await fetch('http://localhost:8000/api/dishes', {
+        const response = await fetch(`${API_URL}/api/dishes`, {
             method: 'POST',
             body: form
         });
