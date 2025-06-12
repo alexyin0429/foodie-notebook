@@ -1,4 +1,4 @@
-# Foodie Notebook
+# Foodie Notebook 📔
 
 A web application for managing and sharing your favorite dishes and recipes.
 
