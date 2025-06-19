@@ -13,7 +13,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # 本地开发
-        "https://foodie-notebook.vercel.app/",  # 生产环境
+        "https://foodie-notebook.vercel.app",  # 生产环境
     ],
     allow_credentials=True,
     allow_methods=["*"],
